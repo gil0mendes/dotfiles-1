@@ -5,16 +5,23 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
 export EDITOR="vim"
 export TERM=xterm-256color
-# Path to your oh-my-zsh installation.
+
 export ZSH="/home/filip/.oh-my-zsh"
 export PATH=$PATH:~/.local/bin
-# Set name of the theme to load --- if set to "random", it will
+
 alias pacman='sudo pacman'
-alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME' 
+
+alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME' #managing dotfiles with git bare 
+
+alias spwn='docker run --rm -v $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name ctf -i ctf:ubuntu19.10' #start docker container with pwn tools
+alias bpwn='docker exec -it ctf /bin/bash' #enter bash in the pwn docker container
+
+alias rs='redshift -l 50:20 &'
+alias spotify="LD_PRELOAD=/usr/lib/libcurl.so.3:~/.local/bin/spotifywm.so /usr/bin/spotify" #use spotifywm to assign it to 3rd desktop (wm specific)
+
+
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
@@ -78,7 +85,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting)
+plugins=(git zsh-syntax-highlighting vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 

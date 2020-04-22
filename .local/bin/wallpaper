@@ -10,16 +10,17 @@ else
 if [ -d "$1" ] # if directory
     then
          ls $1 |sort -R |tail -1 |while read file; do
-            wal -i $1/$file
+            wal -a 0.5 -i $1/$file
         done
     else # if file 
-        wal -i $1
+        wal -a 0.5 -i $1
     fi
 fi
 cp $HOME/.cache/wal/colors.Xresources $HOME/.Xresources
 
 #https://github.com/FilipLitwora/pywal-discord
-~/pywal-discord/pywal-discord multi
+~/pywal-discord -t glasscord -p ~/.config/EnhancedDiscord/theme.css
+
 
 spicetify update
 
