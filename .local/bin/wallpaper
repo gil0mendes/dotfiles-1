@@ -19,8 +19,7 @@ fi
 cp $HOME/.cache/wal/colors.Xresources $HOME/.Xresources
 
 #https://github.com/FilipLitwora/pywal-discord
-~/pywal-discord -t glasscord -p ~/.config/EnhancedDiscord/theme.css
-
+pywal-discord 
 
 spicetify update
 
