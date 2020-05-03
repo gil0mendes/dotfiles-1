@@ -20,7 +20,7 @@ alias bpwn='docker exec -it ctf /bin/bash' #enter bash in the pwn docker contain
 
 alias rs='redshift -l 50:20 &'
 alias spotify="LD_PRELOAD=/usr/lib/libcurl.so.3:~/.local/bin/spotifywm.so /usr/bin/spotify" #use spotifywm to assign it to 3rd desktop (wm specific)
-
+alias v="nvim "
 
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
