@@ -9,7 +9,6 @@ nmap <C-z> u
 map <C-b> :NERDTreeToggle <Enter>
 imap <C-_> <Esc>0i//
 imap <C-f> <Esc>:%s/
-map <C-n> xxxj
 "imap <C-i> <Esc>:ALEFix<Enter>i
 call plug#begin('~/.vim/plugged')
 	Plug 'scrooloose/nerdtree'
@@ -18,12 +17,12 @@ call plug#begin('~/.vim/plugged')
 	Plug 'mxw/vim-jsx'
     Plug 'mhinz/vim-startify'
     Plug 'dense-analysis/ale'
-    Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
 	Plug 'MaxMEllon/vim-jsx-pretty'
 	Plug 'prettier/vim-prettier', { 'do': 'yarn add', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 	Plug 'pangloss/vim-javascript'
 	Plug 'rust-lang/rust.vim'
     Plug 'ayu-theme/ayu-vim'
+    Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 call plug#end()
 
 syntax on
