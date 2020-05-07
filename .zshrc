@@ -10,6 +10,11 @@ export TERM=xterm-256color
 
 export ZSH="/home/filip/.oh-my-zsh"
 export PATH=$PATH:~/.local/bin
+export LD_LIBRARY_PATH=/usr/lib/
+
+export DENO_DIR="$HOME/.deno"
+export PATH="$DENO_DIR/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 alias pacman='sudo pacman'
 
