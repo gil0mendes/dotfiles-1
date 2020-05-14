@@ -4,22 +4,20 @@
 "  \ V /| | | | | | | | | (__
 "   \_/ |_|_| |_| |_|_|  \___|
 
-map <C-z> <Esc> u i
-nmap <C-z> u
+let mapleader = " "
 
 if (has("nvim")) "file management
     "if not in git repo
-    map <S-b> :Files<CR>
-    map <C-b> :GFiles<CR>
-else
-    map <C-b> :NERDTreeToggle <Enter>
+    map <S-b> :w<CR>:Files<CR>
+    map <C-b> :w<CR>:GFiles<CR>
 endif
+map <C-n> :NERDTreeToggle <Enter>
 
-imap <C-_> <Esc>0i//
 imap <C-f> <Esc>:%s/
 vmap <C-c> <plug>NERDCommenterToggle
 nmap <C-c> <plug>NERDCommenterToggle
 
+nnoremap <leader>gd :YcmCompleter GoTo<CR>
 call plug#begin('~/.vim/plugged')
 	Plug 'scrooloose/nerdtree'
     Plug 'ryanoasis/vim-devicons'
@@ -35,7 +33,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
     Plug 'ycm-core/YouCompleteMe'
     Plug 'preservim/nerdcommenter'
-    Plug 'jparise/vim-graphql'
     if (has("nvim"))
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
@@ -92,9 +89,10 @@ set incsearch
 set backspace=indent,eol,start
 let b:ale_linters = {'javascript': ['eslint'],
             \ 'jsx': ['eslint'],
-            \'javascript.jsx': ['eslint']
-            \,'cpp':['ccls'],
-            \ 'ts': ['eslint']}
+            \'javascript.jsx': ['eslint'],
+            \'cpp':['ccls'],
+            \ 'ts': ['eslint'],
+            \ 'scss':['prettier']}
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['prettier'],
@@ -104,9 +102,13 @@ let g:ale_fixers = {
 \   'rust':['rustfmt'],
 \   'html':['prettier'],
 \   'css':['prettier'],
+\ 'scss':['prettier'],
 \ 'cpp':['ccls']
 \}
 autocmd BufWrite *.js ALEFix
+autocmd BufWrite *.jsx ALEFix
+autocmd BufWrite *.css ALEFix
+autocmd BufWrite *.scss ALEFix
 autocmd BufWrite *.rs ALEFix
 let g:ale_sign_error = 'XX'
 let g:ale_sign_warning = '!!'
