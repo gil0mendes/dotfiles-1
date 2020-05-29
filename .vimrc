@@ -16,8 +16,8 @@ map <C-n> :NERDTreeToggle <Enter>
 imap <C-f> <Esc>:%s/
 vmap <C-c> <plug>NERDCommenterToggle
 nmap <C-c> <plug>NERDCommenterToggle
-
-nnoremap <leader>gd :YcmCompleter GoTo<CR>
+nnoremap <leader>r :Rg<CR>
+"nnoremap <leader>gd :YcmCompleter GoTo<CR>
 call plug#begin('~/.vim/plugged')
 	Plug 'scrooloose/nerdtree'
     Plug 'ryanoasis/vim-devicons'
@@ -31,13 +31,13 @@ call plug#begin('~/.vim/plugged')
 	Plug 'rust-lang/rust.vim'
     Plug 'ayu-theme/ayu-vim'
     Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-    Plug 'ycm-core/YouCompleteMe'
     Plug 'preservim/nerdcommenter'
+    Plug 'ChristianChiarulli/codi.vim'
     if (has("nvim"))
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
     Plug 'airblade/vim-rooter'
-    Plug 'norcalli/nvim-colorizer.lua'
+    Plug 'pechorin/any-jump.vim'
     endif
 call plug#end()
 
@@ -69,14 +69,6 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 endif
 
-"" COC CONFIGURATION
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-
 if (has("nvim"))
     set nohlsearch
 endif
@@ -92,12 +84,14 @@ let b:ale_linters = {'javascript': ['eslint'],
             \'javascript.jsx': ['eslint'],
             \'cpp':['ccls'],
             \ 'ts': ['eslint'],
+        \ 'typescript': ['eslint'],
             \ 'scss':['prettier']}
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['prettier'],
 \ 'jsx': ['prettier'],
 \ 'ts': ['prettier'],
+\ 'typescript': ['prettier'],
 \ 'javascript.jsx': ['[prettier'],
 \   'rust':['rustfmt'],
 \   'html':['prettier'],
@@ -107,6 +101,7 @@ let g:ale_fixers = {
 \}
 autocmd BufWrite *.js ALEFix
 autocmd BufWrite *.jsx ALEFix
+autocmd BufWrite *.tsx ALEFix
 autocmd BufWrite *.css ALEFix
 autocmd BufWrite *.scss ALEFix
 autocmd BufWrite *.rs ALEFix

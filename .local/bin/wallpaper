@@ -27,4 +27,9 @@ spicetify update
 source ~/.cache/wal/colors.sh
 bspc config normal_border_color "${foreground}"
 bspc config focused_border_color "${color2}"
-$HOME/SSD/Pywalfox/daemon/pywalfox.py update
+pywalfox update
+#color=$(sed 's/\#//' <<< $background)
+#echo $color
+#ratbagctl "Logitech G403 Prodigy Wired/Wireless Gaming Mouse" led 0 set color $color
+
+#ratbagctl "Logitech G403 Prodigy Wired/Wireless Gaming Mouse" led 1 set color $color
