@@ -13,7 +13,7 @@ bspc rule -r "*"
 
 sxhkd &
 
-bspc monitor -d 1 2 3 4 5 6 7 8 9 0
+bspc monitor -d α β γ δ ε ζ η θ ι κ
 bspc config window_gap          12
 bspc config border_width         2
 
@@ -31,17 +31,12 @@ bspc rule -a discord desktop='^10'
 wallpaper ~/wallpapers
 ~/.config/polybar/launch.sh &
 
-killall picom
-picom &
 discord &
 
 LD_PRELOAD=/usr/lib/libcurl.so.3:~/.local/bin/spotifywm.so /usr/bin/spotify & #use spotifywm to assign it to 3rd desktop (wm specific)
 
-#brave &
-firefox &
+brave &
 st &
-mountd
-
 
 
 
