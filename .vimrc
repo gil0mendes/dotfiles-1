@@ -17,15 +17,16 @@ imap <C-f> <Esc>:%s/
 vmap <C-c> <plug>NERDCommenterToggle
 nmap <C-c> <plug>NERDCommenterToggle
 nnoremap <leader>r :Rg<CR>
-"nnoremap <leader>gd :YcmCompleter GoTo<CR>
+nmap <C-m> <Plug>MarkdownPreviewToggle
+nmap <Leader>i :ImportJSWord
+
 call plug#begin('~/.vim/plugged')
 	Plug 'scrooloose/nerdtree'
     Plug 'ryanoasis/vim-devicons'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-	Plug 'mxw/vim-jsx'
+    Plug 'mxw/vim-jsx'
     Plug 'mhinz/vim-startify'
     Plug 'dense-analysis/ale'
-	Plug 'MaxMEllon/vim-jsx-pretty'
 	Plug 'prettier/vim-prettier', { 'do': 'yarn add', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 	Plug 'pangloss/vim-javascript'
 	Plug 'rust-lang/rust.vim'
@@ -33,17 +34,19 @@ call plug#begin('~/.vim/plugged')
     Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
     Plug 'preservim/nerdcommenter'
     Plug 'ChristianChiarulli/codi.vim'
+    Plug 'Galooshi/vim-import-js'
     if (has("nvim"))
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
-    Plug 'airblade/vim-rooter'
-    Plug 'pechorin/any-jump.vim'
+        Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+        Plug 'junegunn/fzf.vim'
+        Plug 'airblade/vim-rooter'
+        Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
     endif
 call plug#end()
 
 syntax on
 let ayucolor="dark"
 colorscheme ayu
+
 hi Normal guibg=NONE ctermbg=NONE " transparent bg
 
 "" FZF CONFIGURATION
@@ -79,6 +82,7 @@ set number
 set ttimeoutlen=100
 set incsearch
 set backspace=indent,eol,start
+let g:jsx_ext_required = 0
 let b:ale_linters = {'javascript': ['eslint'],
             \ 'jsx': ['eslint'],
             \'javascript.jsx': ['eslint'],
@@ -100,6 +104,7 @@ let g:ale_fixers = {
 \ 'cpp':['ccls']
 \}
 autocmd BufWrite *.js ALEFix
+autocmd BufWrite *.ts ALEFix
 autocmd BufWrite *.jsx ALEFix
 autocmd BufWrite *.tsx ALEFix
 autocmd BufWrite *.css ALEFix

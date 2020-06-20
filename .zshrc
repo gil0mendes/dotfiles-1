@@ -4,7 +4,6 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
 export EDITOR="vim"
 export TERM=xterm-256color
 
@@ -16,16 +15,15 @@ export DENO_DIR="$HOME/.deno"
 export PATH="$DENO_DIR/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
+#export PATH=~/SSD/fuchsia/.jiri_root/bin:$PATH
+#source ~/SSD/fuchsia/scripts/fx-env.sh
+
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 alias pacman='sudo pacman'
-
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME' #managing dotfiles with git bare 
-
-alias spwn='docker run --rm -v $PWD:/pwd --cap-add=SYS_PTRACE --security-opt seccomp=unconfined -d --name ctf -i ctf:ubuntu19.10' #start docker container with pwn tools
-alias bpwn='docker exec -it ctf /bin/bash' #enter bash in the pwn docker container
 
 alias rs='redshift -l 50:20 &'
 alias spotify="LD_PRELOAD=/usr/lib/libcurl.so.3:~/.local/bin/spotifywm.so /usr/bin/spotify" #use spotifywm to assign it to 3rd desktop (wm specific)
@@ -49,7 +47,7 @@ alias v="nvim "
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-#ZSH_THEME="oxide"
+#ZSH_THEME="agnoster"
 ZSH_THEME="powerlevel10k/powerlevel10k" 
 # DISABLE_AUTO_UPDATE="true"
 # Uncomment the following line to automatically update without prompting.
@@ -94,7 +92,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting vi-mode)
+plugins=(zsh-syntax-highlighting vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -123,7 +121,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#prompt_context(){}
+prompt_context(){}
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
