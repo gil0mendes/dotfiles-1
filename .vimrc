@@ -18,7 +18,7 @@ vmap <C-c> <plug>NERDCommenterToggle
 nmap <C-c> <plug>NERDCommenterToggle
 nnoremap <leader>r :Rg<CR>
 nmap <C-m> <Plug>MarkdownPreviewToggle
-nmap <Leader>i :ImportJSWord
+nmap <Leader>i <Plug>ImportJSWord
 
 call plug#begin('~/.vim/plugged')
 	Plug 'scrooloose/nerdtree'
@@ -35,6 +35,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'preservim/nerdcommenter'
     Plug 'ChristianChiarulli/codi.vim'
     Plug 'Galooshi/vim-import-js'
+    Plug 'dart-lang/dart-vim-plugin'
+    Plug 'thosakwe/vim-flutter'
     if (has("nvim"))
         Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
         Plug 'junegunn/fzf.vim'
@@ -110,6 +112,7 @@ autocmd BufWrite *.tsx ALEFix
 autocmd BufWrite *.css ALEFix
 autocmd BufWrite *.scss ALEFix
 autocmd BufWrite *.rs ALEFix
+autocmd BufWrite *.dart DartFmt
 let g:ale_sign_error = 'XX'
 let g:ale_sign_warning = '!!'
 filetype plugin indent on

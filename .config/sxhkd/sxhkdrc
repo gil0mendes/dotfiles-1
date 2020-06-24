@@ -3,8 +3,7 @@
 # / __\ \/ / '_ \| |/ / _` |
 # \__ \>  <| | | |   < (_| |
 # |___/_/\_\_| |_|_|\_\__,_|
-#Alt_L 
-#    bh #cs:go bunny hop script (remove if unnecessary)
+
 super + Return
 	st
 
@@ -14,6 +13,9 @@ super + d
 #choose new wallpaper/colorscheme
 super + shift + w
     wallpaper ~/wallpapers
+
+super + shift + s
+    bash /tmp/pw
 
 @Print
     scrot -s $HOME/screenshots/%Y-%m-%d_$wx$h.png -e 'xclip -selection clipboard -t image/png -i $f' #screenshot of selection & copy to clipboard
