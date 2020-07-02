@@ -13,7 +13,8 @@ if (has("nvim")) "file management
 endif
 map <C-n> :NERDTreeToggle <Enter>
 
-imap <C-f> <Esc>:%s/
+imap <C-f> <Esc>:%s//g<Left><Left>
+
 vmap <C-c> <plug>NERDCommenterToggle
 nmap <C-c> <plug>NERDCommenterToggle
 nnoremap <leader>r :Rg<CR>
@@ -113,6 +114,10 @@ autocmd BufWrite *.css ALEFix
 autocmd BufWrite *.scss ALEFix
 autocmd BufWrite *.rs ALEFix
 autocmd BufWrite *.dart DartFmt
+
+" Remove trailing whitespace on save
+autocmd BufWritePre * %s/\s\+$//e
+
 let g:ale_sign_error = 'XX'
 let g:ale_sign_warning = '!!'
 filetype plugin indent on
